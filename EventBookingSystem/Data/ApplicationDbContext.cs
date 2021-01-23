@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using EventBookingSystem.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,10 @@ namespace EventBookingSystem.Data
             : base(options)
         {
         }
+
+        public DbSet<Booking> Booking { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<Venue> Venue { get; set; }
     }
 }
