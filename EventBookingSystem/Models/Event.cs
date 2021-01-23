@@ -26,7 +26,7 @@ namespace EventBookingSystem.Models
 
         public int VenueId { get; set; }
 
-        public Venue Venue { get; set; }
+        public Venue EventVenue { get; set; }
 
         public virtual ICollection<Booking> Bookings { get; set; }
     }

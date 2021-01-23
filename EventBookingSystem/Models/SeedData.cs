@@ -64,7 +64,7 @@ namespace EventBookingSystem.Models
                     Description = "",
                     StartTime = new DateTime(2022, 5, 13, 18, 30, 0),
                     Price = 69.0m,
-                    Venue = menArena
+                    EventVenue = menArena
                 };
 
                 context.Event.Add(littleMix);
