@@ -23,7 +23,7 @@ namespace EventBookingSystem.Models
                 {
                     FirstName = "Philip",
                     LastName = "Fry",
-                    Email = "philip.fry@planex.ea"
+                    Email = "philip.j.fry@planex.earth"
                 };
 
                 context.Customer.AddRange(
@@ -77,6 +77,7 @@ namespace EventBookingSystem.Models
                     SeatBlock = 1,
                     SeatNumber = 1
                 };
+                context.Booking.Add(fryAtLittleMixInManchester);
                 context.SaveChanges();
             }
         }
