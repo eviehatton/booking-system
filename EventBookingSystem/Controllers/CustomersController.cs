@@ -34,6 +34,8 @@ namespace EventBookingSystem.Controllers
             }
 
             var customer = await _context.Customer
+                .Include(m => m.Bookings)
+                .ThenInclude(b => b.Event)
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {

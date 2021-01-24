@@ -34,3 +34,50 @@
     <a asp-action="Edit" asp-route-id="@Model.CustomerId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<div>
+    <h2>Bookings</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                   Event
+                </th>
+                <th>
+                    Seat Block
+                </th>
+                <th>
+                    Seat Number
+                </th>
+                <th>
+                    Price
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Bookings)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatBlock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-controller="Bookings" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="Bookings" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Bookings" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
