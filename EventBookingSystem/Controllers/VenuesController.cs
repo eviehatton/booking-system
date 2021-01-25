@@ -34,6 +34,8 @@ namespace EventBookingSystem.Controllers
             }
 
             var venue = await _context.Venue
+                .Include(m => m.Events)
+                
                 .FirstOrDefaultAsync(m => m.VenueId == id);
             if (venue == null)
             {
