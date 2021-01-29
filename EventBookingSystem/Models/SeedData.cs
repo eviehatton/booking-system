@@ -57,6 +57,22 @@ namespace EventBookingSystem.Models
                         Location = "Greenwich, London"
                     }
                 );
+                Venue Academy = new Venue
+                {
+                    Name = "Academy 1",
+                    Capacity = 21000,
+                    Location = "Manchester"
+                };
+
+                context.Venue.AddRange(
+                    menArena,
+                    new Venue
+                    {
+                        Name = "Aacdemy 2",
+                        Capacity = 950,
+                        Location = "Oxford Rd, Manchester"
+                    }
+                   );
 
                 Event littleMix = new Event
                 {
@@ -68,6 +84,28 @@ namespace EventBookingSystem.Models
                 };
 
                 context.Event.Add(littleMix);
+
+                Event HarryStyles = new Event
+                {
+                    Name = "Harry Styles (Manchester)",
+                    Description = "Love On Tour",
+                    StartTime = new DateTime(2022, 3, 13, 19, 00, 0),
+                    Price = 150.0m,
+                    EventVenue = menArena
+                };
+
+                context.Event.Add(HarryStyles);
+
+                Event LouisTomlinson = new Event
+                {
+                    Name = "Louis Tomlinson (Manchester)",
+                    Description = "",
+                    StartTime = new DateTime(2021, 9, 19, 19, 00, 0),
+                    Price = 64.0m,
+                    EventVenue = menArena
+                };
+
+                context.Event.Add(LouisTomlinson);
 
                 Booking fryAtLittleMixInManchester = new Booking
                 {

@@ -35,7 +35,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 <div>
-    <h2>Bookings</h2>
+    <h2>Events</h2>
     <table class="table">
         <thead>
             <tr>
@@ -60,7 +60,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.EventId)
+                        @Html.DisplayFor(modelItem => item.StartTime)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)

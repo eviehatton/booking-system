@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EventBookingSystem.Data;
 using EventBookingSystem.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace EventBookingSystem.Controllers
 {
@@ -22,7 +23,9 @@ namespace EventBookingSystem.Controllers
         // GET: Venues
         public async Task<IActionResult> Index()
         {
+            
             return View(await _context.Venue.ToListAsync());
+            
         }
 
         // GET: Venues/Details/5
@@ -35,8 +38,16 @@ namespace EventBookingSystem.Controllers
 
             var venue = await _context.Venue
                 .Include(m => m.Events)
-                
                 .FirstOrDefaultAsync(m => m.VenueId == id);
+
+            var dates = from d in _context.Event
+                        select d;
+            dates = dates.OrderByDescending(m => m.StartTime)
+                .Where(m => m.StartTime > DateTime.Today)
+                .Take(10);
+
+
+
             if (venue == null)
             {
                 return NotFound();

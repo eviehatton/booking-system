@@ -29,5 +29,10 @@ namespace EventBookingSystem.Models
         public Venue EventVenue { get; set; }
 
         public virtual ICollection<Booking> Bookings { get; set; }
+
+        internal static object OrderByDescedning(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
