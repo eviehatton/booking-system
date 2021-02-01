@@ -20,11 +20,20 @@ namespace EventBookingSystem.Controllers
         }
 
         // GET: Events
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var applicationDbContext = _context.Event.Include(@Event => @Event.EventVenue);
-            return View(await applicationDbContext.ToListAsync());
+            var events = from e in _context.Event
+                         select e;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                events = events.Where(s => s.Name.Contains(searchString)).Include(@Event => @Event.EventVenue);
+            }
+
+            return View(await events.ToListAsync());
         }
+
+
 
         // GET: Events/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -56,6 +65,8 @@ namespace EventBookingSystem.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        
+
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EventId,Name,Description,StartTime,Price,VenueId")] Event @event)
         {
